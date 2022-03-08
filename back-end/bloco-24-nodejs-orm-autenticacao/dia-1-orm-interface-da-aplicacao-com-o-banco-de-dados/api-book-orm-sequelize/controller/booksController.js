@@ -32,9 +32,19 @@ const create = async (req, res, next) => {
   }
 }
 
-const update = (req, res, next) => {
+const update = async (req, res, next) => {
   try {
-    console.log('update');
+    const { id } = req.params;
+    const { title, author, pageQuantity } = req.body;
+
+    const updateBook = await Books.update(
+      { title, author, pageQuantity }, 
+      { where: {id}},
+    );
+
+    if(!updateBook) res.status(404).json({ message: 'Livro não encontrado' });
+    console.log(updateBook);
+    return res.status(200).json({ message: 'Atualizado com sucesso' });
   } catch (error) {
     next();
   }
