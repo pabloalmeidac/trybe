@@ -25,6 +25,20 @@ const getById = async (req, res, next) => {
   }
 }
 
+const getByAuthor = async (req, res, next) => {
+  try {
+    const { author } = req.params;
+    const authorBook = await Books.findOne({ where: { author }});
+  
+    if (!authorBook) res.status(404).json({ message: 'Livro do author não encontrado' });
+    
+    return res.status(200).json(authorBook);
+  } catch (error) {
+    next()
+  }
+
+}
+
 const create = async (req, res, next) => {
   try {
     const { title, author, pageQuantity } = req.body;
@@ -65,4 +79,4 @@ const exclude = async (req, res, next) => {
     next();
   }
 }
-module.exports = { getAll, getById, create, update, exclude };
+module.exports = { getAll, getById, create, update, exclude, getByAuthor };
