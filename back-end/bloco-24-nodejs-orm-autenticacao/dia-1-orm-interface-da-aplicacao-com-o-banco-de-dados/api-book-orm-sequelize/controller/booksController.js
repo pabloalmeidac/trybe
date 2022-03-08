@@ -1,16 +1,21 @@
 const { Books } = require('../models');
 
-const getAll = async (req, res, next) => {
+const getAll = async (_req, res, _next) => {
   const bookAll = await Books.findAll();
 
-  if(!bookAll) res.status(404).json({ message: 'Não existe nenhum livro'});
-  
+  if (!bookAll) res.status(404).json({ message: 'Não existe nenhum livro'});
+
   return res.status(200).json(bookAll);
 }
 
-const getById = (req, res, next) => {
+const getById = async (req, res, next) => {
   try {
-    console.log('getById');
+    const { id } = req.params;
+    const book = await Books.findByPk(id);
+
+    if (!book) return res.status(404).json({ message: 'Livro não encontrado' });
+
+    return res.status(200).json(book);
   } catch (error) {
     next();
   }
