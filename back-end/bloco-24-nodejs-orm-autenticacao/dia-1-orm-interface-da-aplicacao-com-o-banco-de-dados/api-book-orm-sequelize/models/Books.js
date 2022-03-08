@@ -5,7 +5,6 @@ const Books = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     pageQuantity: DataTypes.INTEGER,
-    email: DataTypes.STRING,
   });
 
   return Books;
