@@ -9,6 +9,7 @@ app.use(express.json());
 
 // listar todos os livros
 app.get('/books', booksController.getAll);
+app.get('/book/search', booksController.getByAuthor);
 
 // pega o livro com o id especificado
 app.get('/book/:id', booksController.getById);
