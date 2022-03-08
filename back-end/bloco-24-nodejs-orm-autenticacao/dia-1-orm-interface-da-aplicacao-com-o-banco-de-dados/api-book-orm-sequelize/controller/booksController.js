@@ -21,9 +21,12 @@ const getById = async (req, res, next) => {
   }
 }
 
-const create = (req, res, next) => {
+const create = async (req, res, next) => {
   try {
-    console.log('create');
+    const { title, author, pageQuantity } = req.body;
+    newBook = await Books.create({ title, author, pageQuantity });
+
+    return res.status(201).json(newBook);
   } catch (error) {
     next();
   }
