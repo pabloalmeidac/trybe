@@ -1,11 +1,15 @@
 const { Books } = require('../models');
 
-const getAll = async (_req, res, _next) => {
-  const bookAll = await Books.findAll();
-
-  if (!bookAll) res.status(404).json({ message: 'Não existe nenhum livro'});
-
-  return res.status(200).json(bookAll);
+const getAll = async (_req, res, next) => {
+  try {
+    const bookAll = await Books.findAll();
+  
+    if (!bookAll) res.status(404).json({ message: 'Não existe nenhum livro'});
+  
+    return res.status(200).json(bookAll);
+  } catch (error) {
+    next()
+  }
 }
 
 const getById = async (req, res, next) => {
@@ -43,16 +47,20 @@ const update = async (req, res, next) => {
     );
 
     if(!updateBook) res.status(404).json({ message: 'Livro não encontrado' });
-    console.log(updateBook);
+    
     return res.status(200).json({ message: 'Atualizado com sucesso' });
   } catch (error) {
     next();
   }
 }
 
-const exclude = (req, res, next) => {
+const exclude = async (req, res, next) => {
   try {
-    console.log('exclude'); 
+    const { id } = req.params;
+
+    const deleteBook = await Books.destroy({ where: { id }});
+
+    return res.status(200).json({ message: 'Livro excluido' });
   } catch (error) {
     next();
   }
