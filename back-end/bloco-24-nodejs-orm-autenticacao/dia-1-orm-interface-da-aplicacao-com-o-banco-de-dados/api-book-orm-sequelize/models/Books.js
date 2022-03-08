@@ -1,7 +1,7 @@
 'use strict';
 
 const Books = (sequelize, DataTypes) => {
-  const Books = sequelize.define("Books", {
+  const Book = sequelize.define("Books", {
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     pageQuantity: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ const Books = (sequelize, DataTypes) => {
     tableName: 'Books',
   });
 
-  return Books;
+  return Book;
 };
 
 module.exports = Books;
