@@ -1,5 +1,5 @@
 const express = require('express');
-const booksController = require('./controller/booksController');
+const booksController = require('./controllers/booksController');
 
 const app = express();
 
