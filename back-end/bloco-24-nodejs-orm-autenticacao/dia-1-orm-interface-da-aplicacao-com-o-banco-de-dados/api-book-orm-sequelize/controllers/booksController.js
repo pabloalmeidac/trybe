@@ -27,10 +27,10 @@ const getById = async (req, res, next) => {
 
 const getByAuthor = async (req, res, next) => {
   try {
-    const { author } = req.params;
-    const authorBook = await Books.findOne({ where: { author }});
+    const { author } = req.query;
+    const authorBook = await Books.findAll({ where: { author }});
   
-    if (!authorBook) res.status(404).json({ message: 'Livro do author não encontrado' });
+    if (!authorBook || authorBook.length === 0) res.status(404).json({ message: 'Livro do author não encontrado' });
     
     return res.status(200).json(authorBook);
   } catch (error) {
