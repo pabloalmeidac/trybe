@@ -37,7 +37,7 @@ const convert = (value: number, unityBase: string, unityConversion: string): num
   const exponent: number = (toIndex - forIndex);
 
   const result = value * Math.pow(10, exponent);
-  console.log(`A conversão de ${value}${unityBase} é ${result}${unityConversion}`);
+  console.log(`A conversão de ${value}${unityBase} é ${result}${unityConversion}\n`);
   
   return result;
 }
