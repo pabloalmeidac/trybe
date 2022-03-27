@@ -1,4 +1,4 @@
-const unitys: string[] = ['kg', 'hg', 'dag', 'g', 'dg', 'cg', 'mg'];
+const unitys = ['km³', 'hm³', 'dam³', 'm³', 'dm³', 'cm³', 'mm³'];
 
 const convert = (value: number, unityBase: string, unityConversion: string): number => {
   const forIndex: number = unitys.indexOf(unityBase);
