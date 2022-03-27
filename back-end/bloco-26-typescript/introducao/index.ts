@@ -3,6 +3,7 @@ import convertLength from './length';
 import convertMass from './mass';
 import convertArea from './area';
 import convertVolume from './volume';
+import mmo from './character';
 
 const main = (): void => {
   const resultLength: number = convertLength(10,'km', 'm');
@@ -19,3 +20,4 @@ const main = (): void => {
 }
 
 main();
+mmo();
