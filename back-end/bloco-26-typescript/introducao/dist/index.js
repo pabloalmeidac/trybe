@@ -10,7 +10,8 @@ const area_1 = __importDefault(require("./area"));
 const volume_1 = __importDefault(require("./volume"));
 const capacity_1 = __importDefault(require("./capacity"));
 const character_1 = __importDefault(require("./character"));
-const conversions = '1 - Length | 2 - Mass | 3 - Volume | 4 - Area | 5 - Capacity';
+const seasons_1 = __importDefault(require("./seasons"));
+const conversions = '1 - Length | 2 - Mass | 3 - Volume | 4 - Area | 5 - Capacity | 6 - Nenhuma';
 const main = () => {
     const whichConversion = readline_sync_1.default.questionInt(`Digite o numero correspondente a que tipo de conversão deseja \n${conversions}\n`);
     switch (whichConversion) {
@@ -29,10 +30,18 @@ const main = () => {
         case 5:
             (0, capacity_1.default)();
             break;
+        case 6:
+            break;
         default:
             console.log('Numero incorreto');
             break;
     }
+    const whichSeason = readline_sync_1.default.questionInt('Gostaria de saber a estação do ano? \n1 - Sim.\n2 - Não.\n');
+    if (whichSeason === 1)
+        (0, seasons_1.default)();
+    const characters = readline_sync_1.default.questionInt('\nGostaria de informações dos personagens? \n1 - Sim.\n2 - Não.\n');
+    if (characters === 1)
+        (0, character_1.default)();
+    return console.log('\nFIM');
 };
 main();
-(0, character_1.default)();
