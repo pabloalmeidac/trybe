@@ -1,6 +1,6 @@
-import Colors from "./Colors";
-import Directions from "./Directions";
-import Doors from "./Doors";
+import Colors from "./utils/Colors";
+import Directions from "./utils/Directions";
+import Doors from "./utils/Doors";
 
 class Car {
   _make: string;

@@ -1,18 +1,16 @@
-// ./index.ts
-
 import Car from "./Car";
-import Colors from "./Colors";
-import Directions from "./Directions";
-import Doors from "./Doors";
-import IPizza from "./Pizza";
-
+import Doors from "./utils/Doors";
+import { Flavor, Slices } from "./interfaces/Pizza";
+import IPizzaCommon from "./interfaces/PizzaCommon";
+import IPizzaSugar from "./interfaces/PizzaSugar";
+import IPizzaVegetarian from "./interfaces/PizzaVegetarian";
+import Colors from "./utils/Colors";
+import Directions from "./utils/Directions";
 
 class Main {
   private opala = new Car("Volksvagem", Colors.BLACK, 4);
-
-  /* constructor() {
-   
-  } */
+  
+  /* constructor() {} */
 
   driveTheCar(): void {
     this.opala.hodor(Doors.DRIVER);
@@ -47,14 +45,33 @@ class Main {
     this.opala.speedUp();
   }
   
-  makeAPizza(): void {
-    const calabresa: IPizza = { flavor: 'Calabresa', slices: 8 };
-    console.log(`Pizza de ${calabresa.flavor} feita com ${calabresa.slices} pedaços.`);
+  makeAPizza(flavor: Flavor, slices: Slices): void {
+    if (flavor ==='Calabresa' || flavor ==='Calabresa' || flavor ==='Calabresa') {
+      const pizza: IPizzaCommon = {flavor, slices};
+      return console.log(`Pizza de ${pizza.flavor} feita com ${pizza.slices} pedaços.`);
+    }
+
+    if (flavor ==='Marguerita' || flavor ==='Palmito' || flavor ==='Cogumelos') {
+      const pizza: IPizzaVegetarian = { flavor, slices};
+      return console.log(`Pizza de ${pizza.flavor} feita com ${pizza.slices} pedaços.`);
+    }
+
+    if (flavor ==='Nutela' || flavor ==='Goiabada com Queijo' || flavor ==='Marshmallow') {
+      if(slices === 4) {
+        const pizza: IPizzaSugar = { flavor, slices: 4 };
+        return console.log(`Pizza de ${pizza.flavor} feita com ${pizza.slices} pedaços.`);
+      } else {
+        return console.log(`Pizza de ${flavor} só pode ser feita com 4 pedaços.`);
+      }
+    }
   }
 }
 
 const app = new Main();
 
 app.driveTheCar();
-app.makeAPizza();
+app.makeAPizza('Calabresa', 8);
+app.makeAPizza('Marguerita', 6);
+app.makeAPizza('Nutela', 6); 
+
 
