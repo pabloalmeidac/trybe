@@ -1,0 +1,1 @@
+export type callbackFilter<T> = (value: T, index?: number, array?: Array<T>) => boolean;
