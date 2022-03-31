@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express, { Express, NextFunction, Response, Request } from 'express';
+import postRouter from './router/post.router';
 import userRouter from "./router/user.router";
 
 export default class App {
@@ -8,7 +9,6 @@ export default class App {
 
   constructor() {
     this.app = express();
-
     this.app.use(express.json());
 
     this.routes();
@@ -17,6 +17,8 @@ export default class App {
   private routes() {
     this.app.get('/', (req: Request, res: Response, next: NextFunction) => res.status(200).json({ message: 'Acessou.'}));
     this.app.use('/users', userRouter);
+    this.app.use('/posts', postRouter);
+
   }
 
   public start() {

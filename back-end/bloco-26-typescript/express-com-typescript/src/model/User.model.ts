@@ -3,9 +3,7 @@ import { IUser, IUserCreated } from "../interfaces/User/User";
 import Connection from "./Connection"
 
 export default class UserModel {
-  constructor(protected DB: Connection) {
-
-  }
+  constructor(protected DB: Connection) {}
 
   async getAll(): Promise<RowDataPacket[]> {
     const [result] = await this.DB.getConnection().execute<RowDataPacket[]>(

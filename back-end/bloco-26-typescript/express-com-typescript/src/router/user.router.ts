@@ -7,9 +7,7 @@ import userSchema from "../schema/user.schema";
 import validateUser from "../middleware/validateUser.middleware";
 
 const userModel = new UserModel(new Connection);
-
 const userService = new UserService(userModel);
-
 const userControler = new UserController(userService);
 
 const userRouter = Router();

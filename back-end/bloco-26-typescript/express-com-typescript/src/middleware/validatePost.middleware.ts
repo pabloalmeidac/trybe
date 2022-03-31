@@ -3,9 +3,9 @@ import { ObjectSchema } from 'joi';
 
 export default (schema: ObjectSchema) => (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, email, password } = req.body;
+    const { title, author, category } = req.body;
 
-    const { error } = schema.validate({ name, email, password });
+    const { error } = schema.validate({ title, author, category });
   
     if (error) {
       const [code, message] = error.message.split('|');
