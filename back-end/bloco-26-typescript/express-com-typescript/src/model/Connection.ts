@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import mysql, { Pool } from "mysql2/promise";
+
 
 export default class Connection {
   private connection: Pool

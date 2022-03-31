@@ -1,6 +1,6 @@
 import { ResultSetHeader, RowDataPacket } from "mysql2"
 import { IUser, IUserCreated } from "../interfaces/User/User";
-import Connection from "./connection"
+import Connection from "./Connection"
 
 export default class UserModel {
   constructor(protected DB: Connection) {

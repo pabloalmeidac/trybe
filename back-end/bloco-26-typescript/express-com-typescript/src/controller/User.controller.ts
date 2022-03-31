@@ -4,7 +4,7 @@ import UserService from "../service/User.service";
 export default class UserController {
 
   constructor(private userService: UserService) {}
-
+  
   getAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const users = await this.userService.getAll();
