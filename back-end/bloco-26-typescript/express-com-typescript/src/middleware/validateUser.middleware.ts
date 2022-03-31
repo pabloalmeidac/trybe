@@ -4,6 +4,7 @@ import { ObjectSchema } from 'joi';
 export default (schema: ObjectSchema) => (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, email, password } = req.body;
+
     const { error } = schema.validate({ name, email, password });
   
     if (error) {
