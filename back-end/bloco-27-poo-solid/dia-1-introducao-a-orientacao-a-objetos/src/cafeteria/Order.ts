@@ -47,7 +47,7 @@ class Order {
   }
 
   set discount(value: number) {
-    if(value < 0 ) throw new Error('discount cannot be less than');
+    if(value < 0 ) throw new Error('discount cannot be less than 0');
 
     this._discount = value;
   }
