@@ -46,7 +46,7 @@ class Data {
     this._year = value;
   }
 
-  getMonthName() {
+  getMonthName(): string {
     const months = [
       'janeiro',
       'fevereiro',
@@ -64,6 +64,18 @@ class Data {
 
   return months[this.month - 1];
   }
+
+  compare(date: Data): number {
+
+    const currentDate = `${this.year}/${this.month}/${this.day}`;
+
+    const dateParam = `${date.year}/${date.month}/${date.day}`;
+
+    if (new Date(currentDate) > new Date(dateParam)) return 1;
+    if (new Date(currentDate) < new Date(dateParam)) return -1;
+
+    return 0;
+}
 }
 
 

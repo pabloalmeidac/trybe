@@ -52,13 +52,13 @@ class Order {
     this._discount = value;
   }
 
-  totalOrder () {
+  totalOrder (): number {
     const total = this._items.reduce((previousValue, item) => previousValue += item.price, 0)
 
     return total;
   }
   
-  totalOrderWithDiscount () {
+  totalOrderWithDiscount (): number {
     const totalOrder = this.totalOrder();
     const total = totalOrder * ( 1 - this._discount);
     
